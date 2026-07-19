@@ -76,7 +76,7 @@ export const DEFAULT_IMAGE_FIELD: Omit<ImageField, 'id' | 'x' | 'y'> = {
   type: 'image',
   width: 200,
   height: 200,
-  crop: false,
+  crop: true,
   shadow: false,
   cornerRadius: 0,
 };
