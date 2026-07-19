@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────
+   Posty Design Tokens
+   Warm monochrome + single muted-blue accent
+   ────────────────────────────────────────────────── */
+
+@theme {
+  --color-canvas: #FAFAF9;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F5F5F4;
+  --color-border: #E5E5E3;
+  --color-border-strong: #D4D4D1;
+  --color-text-primary: #1C1C1A;
+  --color-text-secondary: #78776F;
+  --color-text-tertiary: #A3A29A;
+  --color-accent: #2563EB;
+  --color-accent-hover: #1D4ED8;
+  --color-accent-soft: #EFF6FF;
+  --color-danger: #DC2626;
+  --color-danger-hover: #B91C1C;
+  --color-danger-soft: #FEF2F2;
+  --color-success: #16A34A;
+  --color-success-soft: #F0FDF4;
+
+  --font-sans: 'Geist Sans', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Base ── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ── Selection ── */
+
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* ── Scrollbar (thin, non-intrusive) ── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
+
+/* ── Focus ring ── */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ── Button press feedback ── */
+
+.press-feedback {
+  transition: transform 160ms var(--ease-out);
+}
+
+.press-feedback:active {
+  transform: scale(0.97);
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
