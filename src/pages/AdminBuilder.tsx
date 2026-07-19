@@ -83,7 +83,7 @@ export function AdminBuilder() {
       }
 
       if (savedId) {
-        const shareUrl = `${window.location.origin}/fill/${savedId}`;
+        const shareUrl = `${window.location.origin}/${savedId}`;
         await navigator.clipboard.writeText(shareUrl).catch(() => {});
         showToast('Template saved & link copied to clipboard!', 'success');
       }
@@ -113,7 +113,7 @@ export function AdminBuilder() {
 
   /* ── Share URL ── */
   const shareUrl = template.id
-    ? `${window.location.origin}/fill/${template.id}`
+    ? `${window.location.origin}/${template.id}`
     : null;
 
   return (

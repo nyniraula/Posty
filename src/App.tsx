@@ -12,7 +12,7 @@ export function App() {
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
       <Route path="/admin/builder" element={<AdminBuilder />} />
       <Route path="/admin/builder/:templateId" element={<AdminBuilder />} />
-      <Route path="/fill/:templateId" element={<PublicFill />} />
+      <Route path="/:templateId" element={<PublicFill />} />
     </Routes>
   );
 }

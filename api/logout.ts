@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import cookie from 'cookie';
+import * as cookie from 'cookie';
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

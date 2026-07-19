@@ -1,7 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { nanoid } from 'nanoid';
-import { db } from '../lib/db';
-import { requireAuth } from '../lib/auth';
+import { db } from '../lib/db.js';
+import { requireAuth } from '../lib/auth.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'GET') {
@@ -37,7 +36,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return;
       }
 
-      const id = nanoid(10);
+      let baseSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      if (!baseSlug) baseSlug = 'template';
+      
+      let id = baseSlug;
+      let isUnique = false;
+      let counter = 0;
+      
+      while (!isUnique) {
+        const check = await db.execute({
+          sql: 'SELECT id FROM templates WHERE id = ?',
+          args: [id]
+        });
+        if (check.rows.length === 0) {
+          isUnique = true;
+        } else {
+          counter++;
+          id = `${baseSlug}-${counter}`;
+        }
+      }
 
       await db.execute({
         sql: `INSERT INTO templates (id, name, background, width, height, fields)

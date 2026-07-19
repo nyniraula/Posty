@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import cookie from 'cookie';
+import * as cookie from 'cookie';
 import crypto from 'crypto';
 
 export function getSessionHash(): string {

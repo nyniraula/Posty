@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import cookie from 'cookie';
-import { getSessionHash } from './lib/auth';
+import * as cookie from 'cookie';
+import { getSessionHash } from './lib/auth.js';
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import ImageKit from 'imagekit';
-import { requireAuth } from '../lib/auth';
+import { requireAuth } from '../lib/auth.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
